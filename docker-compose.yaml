@@ -1,0 +1,8 @@
+services:
+  dev-app-angular:
+    build: .
+    ports:
+      - "4200:80"
+    volumes:
+      - "/app/node_modules"
+      - ".:/app"
