@@ -17,11 +17,11 @@
   </div>
 </div>
 
-<form [formGroup]='entryForm' (submit)="submitForm()">
+<form [formGroup]="entryForm" (submit)="submitForm()">
 
   <div class="card">
     <div class="card-header">
-      Informações sobre o lançamento
+      Informações sobre o Lançamento
     </div>
 
     <div class="card-body">
@@ -31,8 +31,7 @@
         <div class="form-group col-md-2">
           <label for="type">tipo</label>
           <select name="type" id="type" formControlName="type" class="form-control">
-            <option *ngFor="let option of typeOptions" [value]="option.value">{{option.text}}</option>
-
+            <option *ngFor="let option of typeOptions" [value]="option.value">{{ option.text }}</option>
           </select>
           <div class="text-danger" *ngIf="entryForm.get('type').invalid && entryForm.get('type').touched">
             <div *ngIf="entryForm.get('type').errors.required">dado obrigatório</div>
@@ -61,7 +60,7 @@
             <div *ngIf="entryForm.get('amount').errors.required">dado obrigatório</div>
           </div>
         </div>
-
+        <!-- Data Calendar-->
         <div class="form-group col-md-2">
           <label for="date">Data</label>
           <p-calendar id="date" formControlName="date" inputStyleClass="form-control" dataType="string"
@@ -71,7 +70,6 @@
             <div *ngIf="entryForm.get('date').errors.required">dado obrigatório</div>
           </div>
         </div>
-
       </div>
 
       <div class="form-row">
@@ -99,8 +97,9 @@
         <div class="form-group col-md-3">
           <label for="categoryId">Categoria</label>
           <select name="categoryId" id="categoryId" formControlName="categoryId" class="form-control">
-            <option *ngFor="let category of categories" [value]="category.id">{{category.name}}</option>
+            <option *ngFor="let category of categories" [value]="category.id">{{ category.name }}</option>
           </select>
+
           <div class="text-danger" *ngIf="entryForm.get('categoryId').invalid && entryForm.get('categoryId').touched">
             <div *ngIf="entryForm.get('categoryId').errors.required">dado obrigatório</div>
           </div>
@@ -111,9 +110,6 @@
           <label for="description">Descrição</label>
           <input type="text" class="form-control" id="description" formControlName="description">
         </div>
-
-
-
       </div>
     </div>
   </div>

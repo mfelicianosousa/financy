@@ -17,6 +17,7 @@ export class EntryListComponent implements OnInit {
        entries => this.entries = entries,
        error => alert('Erro ao carregar a lista')
     )
+    console.log("Entries ", this.entries )
   }
 
   deleteEntry(entry){
