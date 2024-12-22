@@ -1,4 +1,4 @@
-import { OnInit, AfterContentChecked, Injector } from '@angular/core';
+import { Component, OnInit, AfterContentChecked, Injector } from '@angular/core';
 import { FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 
@@ -8,9 +8,12 @@ import { BaseResourceService } from '../../services/base-resources.services';
 import { switchMap } from 'rxjs/operators';
 
 import toastr from 'toastr';
+@Component({
+  selector: '', // Seletor vazio porque é uma classe abstrata
+  template: ''  // Template vazio porque é uma classe abstrata
+})
 
-
-export class BaseResourceFormComponent<T extends BaseResourceModel>
+export abstract class BaseResourceFormComponent<T extends BaseResourceModel>
    implements OnInit, AfterContentChecked {
 
   currentAction: string;
