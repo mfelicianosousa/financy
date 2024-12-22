@@ -164,6 +164,7 @@ export class EntryFormComponent implements OnInit, AfterContentChecked {
 
   private actionsForSuccess(entry: Entry){
      toastr.success('Solicitação processada com sucesso!');
+     console.log(this.route.snapshot.parent);
      // redirect/reload component page
      this.router.navigateByUrl('entries',{skipLocationChange: true}).then(
       ()=>this.router.navigate(['entries',entry.id,'edit'])
