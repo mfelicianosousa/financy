@@ -24,16 +24,10 @@
       </div>
     </div>
   </div>
+  <app-server-error-messages [server-error-messages]="serverErrorMessages">
 
-  <div class="alert alert-danger mt-4" *ngIf="ServerErrorMessages">
-    <strong>Erro no servidor:</strong>
-    <ul>
-      <li *ngFor="let error of serverErrorMessages">{{error}}</li>
-    </ul>
-  </div>
-
-  <button [disabled]="submittingForm || resourceForm.invalid" class="btn btn-primary btn-lg float-right mt-3">
-    Salvar
-  </button>
+    <button [disabled]="submittingForm || resourceForm.invalid" class="btn btn-primary btn-lg float-right mt-3">
+      Salvar
+    </button>
 
 </form>
