@@ -1,21 +1,9 @@
 <app-bread-crumb [items]="[{text: 'Lançamentos', link: '/entries'},{text: pageTitle}]">
 </app-bread-crumb>
 <!-- Page Header de componentes -->
-<app-page-header page-title="Lançamentos" button-text="+ Novo Lançamento" button-link="new"
-  button-class="btn-success"></app-page-header>
-
-<div class="row mb-4">
-  <div class="col-md-10">
-    <h1 class="h2 border-left pl-2">
-      {{pageTitle}}
-    </h1>
-  </div>
-  <div class="col-md-2">
-    <a routerLink="/entries" class="btn btn-light float-right">
-      << Voltar </a>
-  </div>
-</div>
-
+<app-page-header [page-title]="pageTitle" button-text="<< Voltar" button-link="/entries"
+  button-class="btn-light"></app-page-header>
+<!-- Dados do Formulário -->
 <form [formGroup]="resourceForm" (submit)="submitForm()">
 
   <div class="card">
@@ -32,18 +20,16 @@
           <select name="type" id="type" formControlName="type" class="form-control">
             <option *ngFor="let option of typeOptions" [value]="option.value">{{ option.text }}</option>
           </select>
-          <div class="text-danger" *ngIf="resourceForm.get('type').invalid && resourceForm.get('type').touched">
-            <div *ngIf="resourceForm.get('type').errors.required">dado obrigatório</div>
-          </div>
+          <app-form-field-error [form-control]="resourceForm.get('type')"></app-form-field-error>
         </div>
-        <!-- lançamento -->
+        <!-- lançamento name -->
         <div class="form-group col-md-5">
           <label for="name">Lançamento</label>
           <input type="text" class="form-control" id="name" formControlName="name">
-          <div class="text-danger" *ngIf="resourceForm.get('name').invalid && resourceForm.get('name').touched">
-            <div *ngIf="resourceForm.get('name').errors.required">dado obrigatório</div>
-            <div *ngIf="resourceForm.get('name').errors.minlength">deve ter no mínimo 5 caracteres</div>
-          </div>
+          <app-form-field-error [form-control]="resourceForm.get('name')"></app-form-field-error>
+          <!--
+          <pre>{{resourceForm.get('name').errors | json}}</pre>
+          -->
         </div>
         <!-- amout -->
         <div class="form-group col-md-3">
@@ -55,9 +41,7 @@
             <input [imask]="imaskConfig" type="text" class="form-control text-right" id="amount"
               formControlName="amount">
           </div>
-          <div class="text-danger" *ngIf="resourceForm.get('amount').invalid && resourceForm.get('amount').touched">
-            <div *ngIf="resourceForm.get('amount').errors.required">dado obrigatório</div>
-          </div>
+          <app-form-field-error [form-control]="resourceForm.get('amount')"></app-form-field-error>
         </div>
         <!-- Data Calendar-->
         <div class="form-group col-md-2">
@@ -65,10 +49,9 @@
           <p-calendar id="date" formControlName="date" inputStyleClass="form-control" dataType="string"
             dateFormat="dd/mm/yy" [locale]="ptBR" [showButtonBar]="true">
           </p-calendar>
-          <div class="text-danger" *ngIf="resourceForm.get('date').invalid && resourceForm.get('date').touched">
-            <div *ngIf="resourceForm.get('date').errors.required">dado obrigatório</div>
-          </div>
         </div>
+        <app-form-field-error [form-control]="resourceForm.get('date')"></app-form-field-error>
+
       </div>
 
       <div class="form-row">
@@ -86,10 +69,7 @@
               Pendente
             </label>
           </div>
-
-          <div class="text-danger" *ngIf="resourceForm.get('paid').invalid && resourceForm.get('paid').touched">
-            <div *ngIf="resourceForm.get('paid').errors.required">dado obrigatório</div>
-          </div>
+          <app-form-field-error [form-control]="resourceForm.get('paid')"></app-form-field-error>
         </div>
 
         <!-- CategoryId -->
@@ -98,11 +78,7 @@
           <select name="categoryId" id="categoryId" formControlName="categoryId" class="form-control">
             <option *ngFor="let category of categories" [value]="category.id">{{ category.name }}</option>
           </select>
-
-          <div class="text-danger"
-            *ngIf="resourceForm.get('categoryId').invalid && resourceForm.get('categoryId').touched">
-            <div *ngIf="resourceForm.get('categoryId').errors.required">dado obrigatório</div>
-          </div>
+          <app-form-field-error [form-control]="resourceForm.get('categoryId')"></app-form-field-error>
         </div>
 
         <!-- description -->
@@ -126,4 +102,6 @@
   </button>
 
 </form>
+<!--
 <pre>{{ resourceForm.value | json }}</pre>
+-->
