@@ -1,9 +1,14 @@
 import { Injectable, Injector } from '@angular/core';
+
 import { Observable } from 'rxjs';
-import { catchError, flatMap } from 'rxjs/operators';
+import { catchError, flatMap, map } from 'rxjs/operators';
+
 import { BaseResourceService } from '../../../shared/services/base-resources.services';
 import { CategoryService } from '../../categories/shared/category.service';
 import { Entry } from './entry.model';
+
+import * as moment from "moment"
+
 @Injectable({
   providedIn: 'root'
 })
@@ -11,8 +16,7 @@ export class EntryService extends BaseResourceService<Entry> {
 
   constructor(
     protected injector: Injector,
-    private categoryService
-  ) {
+    private categoryService: CategoryService) {
     super( "api/entries", injector, Entry.fromJson);
   }
 

@@ -3,7 +3,7 @@ import { HttpClient} from '@angular/common/http';
 
 import { Observable, throwError } from 'rxjs';
 import { map, catchError} from 'rxjs/operators';
-import { BaseResourceModel } from "../models/base-resource.models";
+import { BaseResourceModel } from "../models/base-resource.model";
 export abstract class BaseResourceService<T extends BaseResourceModel>{
 
     protected http: HttpClient;
@@ -26,6 +26,7 @@ export abstract class BaseResourceService<T extends BaseResourceModel>{
    */
    getAll(): Observable<T[]> {
 
+    debugger;
       return this.http.get(this.apiPath).pipe(
         map(this.jsonDataToResources.bind(this)),
         catchError(this.handleError),

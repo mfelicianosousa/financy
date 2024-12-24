@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { BaseResourceModel } from '../../models/base-resource.models';
+import { BaseResourceModel } from '../../models/base-resource.model';
 import { BaseResourceService } from '../../services/base-resources.services';
 @Component({
   selector: '',

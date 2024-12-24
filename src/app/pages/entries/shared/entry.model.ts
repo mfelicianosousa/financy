@@ -1,6 +1,7 @@
-import { BaseResourceModel } from "../../../shared/models/base-resource.models";
+import { BaseResourceModel } from "../../../shared/models/base-resource.model";
 import { Category } from "../../categories/shared/category.model";
 export class Entry extends BaseResourceModel{
+
   constructor(
     public id?: number,
     public name?: string,
@@ -13,12 +14,12 @@ export class Entry extends BaseResourceModel{
     public category?: Category
 
   ){
-    super()
+     super()
   }
 
   static types = {
     expense: 'Despesa',
-    renevue: 'Receita'
+    revenue: 'Receita'
   };
 
   static fromJson(jsonData: any): Entry {
