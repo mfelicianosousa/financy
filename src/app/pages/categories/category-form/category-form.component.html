@@ -1,7 +1,7 @@
 <app-bread-crumb [items]="[{text: 'Categorias', link: '/categories'},{text: pageTitle}]">
 </app-bread-crumb>
-<app-page-header [page-title]="pageTitle" button-text="<< Voltar" button-link="/categories"
-  button-class="btn-light"></app-page-header>
+<app-page-header [page-title]="pageTitle" button-text="<< Voltar" button-link="/categories" button-class="btn-light">
+</app-page-header>
 
 <form [formGroup]='resourceForm' (submit)="submitForm()">
 
@@ -25,9 +25,9 @@
     </div>
   </div>
   <app-server-error-messages [server-error-messages]="serverErrorMessages">
-
-    <button [disabled]="submittingForm || resourceForm.invalid" class="btn btn-primary btn-lg float-right mt-3">
-      Salvar
-    </button>
+  </app-server-error-messages>
+  <button [disabled]="submittingForm || resourceForm.invalid" class="btn btn-primary btn-lg float-right mt-3">
+    Salvar
+  </button>
 
 </form>
