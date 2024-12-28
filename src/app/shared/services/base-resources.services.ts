@@ -13,20 +13,13 @@ export abstract class BaseResourceService<T extends BaseResourceModel>{
     protected jsonDataToResourceFn: (jsonData: any) => T
    ){
      this.http = injector.get(HttpClient)
-     console.log('BaseResourceService: ',this)
+    // console.log('BaseResourceService: ',this)
    }
 
-   /*
-   getAll(): Observable<T[]>{
-    return this.http.get(this.apiPath).pipe(
-       map((jsonData: Array<any>)=> this.jsonDataToResources(jsonData)),
-       catchError(this.handleError)
-    )
-   }
-   */
+
    getAll(): Observable<T[]> {
 
-    debugger;
+    // debugger;
       return this.http.get(this.apiPath).pipe(
         map(this.jsonDataToResources.bind(this)),
         catchError(this.handleError),
@@ -84,7 +77,7 @@ export abstract class BaseResourceService<T extends BaseResourceModel>{
   }
 
   protected handleError(error: any):Observable<any>{
-    console.log('ERROR NA REQUISICAO => ',error);
+    console.log('Error na requisição => ',error);
     return throwError(error);
   }
 
