@@ -33,8 +33,8 @@ export class ReportsComponent implements OnInit {
 
   categories: Category[] = [];
   entries: Entry[] = [];
-  @ViewChild('month') month: ElementRef = null;
-  @ViewChild('year') year: ElementRef = null;
+  @ViewChild('month',{static: false}) month: ElementRef = null;
+  @ViewChild('year',{static: false}) year: ElementRef = null;
 
 
   constructor(
